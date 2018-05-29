@@ -26,7 +26,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Home</a>
+			<a class="navbar-brand" href="index.php">Home</a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavBar">
 			
@@ -38,27 +38,22 @@
 		<div class="col-md-4 col-sm-4 col-xs-12"></div>
 		<div class="col-md-4 col-sm-4 col-xs-12">
 			<form class="form-container">
-			<h1>Sign Up Form</h1>
+			<h1>Login</h1>
 			  <div class="form-group">
-				 <input type="firstname" class="form-control" id="exampleFirst" placeholder="First Name">
+				 <label for="InputEmail1">Username</label>
+				 <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+				 <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
 			  </div>
 			  <div class="form-group">
-				 <input type="lastname" class="form-control" id="exampleLast" placeholder="Last Name">
-			  </div>
-			  <div class="form-group">
-				 <input type="username" class="form-control" id="exampleUser" placeholder="Username">
-			  </div>
-			  <div class="form-group">
-				 <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-			  </div>
-			  <div class="form-group">
-				 <input type="password" class="form-control" id="exampleUser" placeholder="Password">
+				 <label for="InputPassword1">Password</label>
+				 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 			  </div>
 			  <div class="form-check">
 				 <input type="checkbox" class="form-check-input" id="exampleCheck1">
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			  </div>
-			  <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+			  <a type="submit" class="btn btn-success btn-block">Submit</a>
+			  <a type="submit" class="btn btn-primary btn-block" href="signup.html">Sign Up</a>
 			</form>
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-12"></div>
