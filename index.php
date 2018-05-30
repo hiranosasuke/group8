@@ -35,8 +35,8 @@
 </nav>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4 col-sm-4 col-xs-12"></div>
-		<div class="col-md-4 col-sm-4 col-xs-12">
+		<div class="col-md-2 col-sm-2 col-xs-12"></div>
+		<div class="col-md-8 col-sm-8 col-xs-12">
 			<form class="form-container">
 			<h1>Login</h1>
 			  <div class="form-group">
@@ -53,13 +53,14 @@
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			  </div>
 			  <a type="submit" class="btn btn-success btn-block">Submit</a>
-			  <a type="submit" class="btn btn-primary btn-block" href="signup.html">Sign Up</a>
+			  <a type="submit" class="btn btn-primary btn-block" href="signup.php">Sign Up</a>
 			</form>
 		</div>
-		<div class="col-md-4 col-sm-4 col-xs-12"></div>
+		<div class="col-md-2 col-sm-2 col-xs-12"></div>
 	</div>
 </div>
 </body>
 
 
 </html>
+<php>

@@ -35,33 +35,33 @@
 </nav>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-8 col-sm-8 col-xs-12"></div>
+		<div class="col-md-2 col-sm-2 col-xs-12"></div>
 		<div class="col-md-8 col-sm-8 col-xs-12">
-			<form class="form-container">
+			<form class="form-container" action="includes/signup.inc.php" method="POST">
 			<h1>Sign Up Form</h1>
 			  <div class="form-group">
-				 <input type="firstname" class="form-control" id="exampleFirst" placeholder="First Name">
+				 <input type="firstname" name="first" class="form-control" id="exampleFirst" placeholder="First Name">
 			  </div>
 			  <div class="form-group">
-				 <input type="lastname" class="form-control" id="exampleLast" placeholder="Last Name">
+				 <input type="lastname" name="last" class="form-control" id="exampleLast" placeholder="Last Name">
 			  </div>
 			  <div class="form-group">
-				 <input type="username" class="form-control" id="exampleUser" placeholder="Username">
+				 <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
 			  </div>
 			  <div class="form-group">
-				 <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+				 <input type="uid" name="uid" class="form-control" id="exampleUser" placeholder="Username">
 			  </div>
 			  <div class="form-group">
-				 <input type="password" class="form-control" id="exampleUser" placeholder="Password">
+				 <input type="password" name="pwd" class="form-control" id="exampleUser" placeholder="Password">
 			  </div>
 			  <div class="form-check">
 				 <input type="checkbox" class="form-check-input" id="exampleCheck1">
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			  </div>
-			  <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+			  <button type="submit" name="submit" class="btn btn-primary btn-block">Sign Up</button>
 			</form>
 		</div>
-		<div class="col-md-4 col-sm-4 col-xs-12"></div>
+		<div class="col-md-2 col-sm-2 col-xs-12"></div>
 	</div>
 </div>
 </body>
