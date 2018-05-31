@@ -42,6 +42,7 @@
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			  </div>
 			  <button type="submit" name="submit" class="btn btn-primary btn-block">Sign Up</button>
+
         <!--Response for submit-->
         <?php
           if(isset($_GET['signup'])){
