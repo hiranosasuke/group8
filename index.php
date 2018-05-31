@@ -32,12 +32,13 @@
 				 <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
 			  </div>
 			  <div class="form-check">
-				 <input type="checkbox" class="form-check-input" id="exampleCheck1">
+				 <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+					We can add this later-->
 			 </div>
 			 <?php
 			 	if(!isset($_SESSION['u_id'])){
-					echo'	<input type="submit" name="submit" class="btn btn-success btn-block" value="Log In">
+					echo'	<input type="submit" name="submit" class="btn btn-dark btn-block" value="Log In">
 								<a class="btn btn-primary btn-block" href="signup.php">Sign Up</a>';
 				}
 			 ?>
