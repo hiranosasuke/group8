@@ -6,10 +6,19 @@
  ?>
 
 <body>
+
+<?php
+  if(isset($_GET['signup'])){
+    if($_GET['signup']=='success'){
+      echo '<button class = "btn btn-success btn-block disabled"> Sign Up Success!</button>';
+      echo "<script>setTimeout(\"location.href = 'index.php';\",1500);</script>";
+    }
+  }
+?>
+
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-2 col-sm-2 col-xs-12"></div>
-		<div class="col-md-8 col-sm-8 col-xs-12">
+		<div class="col-md-6 col-sm-6 col-xs-12 m-auto">
 			<form class="form-container" action="includes/signup.inc.php" method="POST">
 			<h1 class="display-4 text-center pb-3">Welcome!</h1>
       <hr style="height:3px">
@@ -33,9 +42,7 @@
         <?php
           if(isset($_GET['signup'])){
 
-            if($_GET['signup']=='success'){
-              echo '<button class = "btn btn-success btn-block disabled"> Sign Up Success!</button>';
-            }else if ($_GET['signup']=='fail'){
+            if ($_GET['signup']=='fail'){
                 echo '<button class = "btn btn-danger btn-block disabled"> Sign Up Failed!</button>';
             }else if($_GET['signup']=='empty'){
               echo '<button class = "btn btn-warning btn-block disabled"> Fill in All Feilds</button>';
@@ -46,7 +53,6 @@
          ?>
 			</form>
 		</div>
-		<div class="col-md-2 col-sm-2 col-xs-12"></div>
 	</div>
 </div>
 </body>
