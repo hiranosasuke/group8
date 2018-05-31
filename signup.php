@@ -42,6 +42,13 @@
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			  </div>
 			  <button type="submit" name="submit" class="btn btn-primary btn-block">Sign Up</button>
+        <?php
+          if($_GET['signup']=='success'){
+            echo '<button class = "btn btn-success btn-block disabled"> Sign In Success!</button>';
+          }else if ($_GET['signup']=='fail'){
+              echo '<button class = "btn btn-danger btn-block disabled"> Sign In Failed!</button>';
+          }
+         ?>
 			</form>
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-12"></div>
