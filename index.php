@@ -5,13 +5,6 @@
 	include_once 'header.php';
 ?>
 <body>
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="index.php">Contact <i class="fa fa-user"></i> Manager</a>
-		</div>
-	</div>
-</nav>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-2 col-sm-2 col-xs-12"></div>
@@ -42,8 +35,12 @@
 				 <input type="checkbox" class="form-check-input" id="exampleCheck1">
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			 </div>
-			  <input type="submit" name="submit" class="btn btn-success btn-block" value="Log In">
-			  <a class="btn btn-primary btn-block" href="signup.php">Sign Up</a>
+			 <?php
+			 	if(!isset($_SESSION['u_id'])){
+					echo'	<input type="submit" name="submit" class="btn btn-success btn-block" value="Log In">
+								<a class="btn btn-primary btn-block" href="signup.php">Sign Up</a>';
+				}
+			 ?>
 			</form>
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-12"></div>
