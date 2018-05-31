@@ -5,10 +5,14 @@
 	include_once 'header.php';
 ?>
 <body>
+	<?php
+		if(isset($_SESSION['u_id'])){
+			header("Location: contact.php");
+		}
+	?>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-2 col-sm-2 col-xs-12"></div>
-		<div class="col-md-8 col-sm-8 col-xs-12">
+		<div class="col-md-6 col-sm-6 col-xs-12 m-auto">
 			<form class="form-container" action="includes/login.inc.php" method="post">
 			<h1 class="display-4 text-center pb-3">Hello!</h1>
 			<hr style="height:3px">
@@ -44,11 +48,9 @@
 			 ?>
 			</form>
 		</div>
-		<div class="col-md-2 col-sm-2 col-xs-12"></div>
 	</div>
 </div>
 </body>
 
 
 </html>
-<php>
