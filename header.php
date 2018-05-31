@@ -22,18 +22,16 @@
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index.php">Contact <i class="fa fa-user"></i> Manager</a>
+		</div>
+		<div>
+			<?php
+			if(isset($_SESSION['u_id'])){
+				echo '<form style="margin-top:10px" action="includes/logout.inc.php" method="POST">
+								<button class="btn btn-danger" style="float:right" type="submit" name="submit">Log Out</button>
+							</form>';
+			}
 
-			<div>
-				<?php
-				if(isset($_SESSION['u_id'])){
-					echo '<form style="margin-top:10px" action="includes/logout.inc.php" method="POST">
-									<button class="btn btn-danger" style="float:right" type="submit" name="submit">Log Out</button>
-								</form>';
-					echo $_SESSION['u_id'];
-				}
-
-				?>
-			</div>
+			?>
 		</div>
 	</div>
 </nav>
