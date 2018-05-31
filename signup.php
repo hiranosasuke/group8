@@ -42,6 +42,21 @@
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			  </div>
 			  <button type="submit" name="submit" class="btn btn-primary btn-block">Sign Up</button>
+        <!--Response for submit-->
+        <?php
+          if(isset($_GET['signup'])){
+
+            if($_GET['signup']=='success'){
+              echo '<button class = "btn btn-success btn-block disabled"> Sign Up Success!</button>';
+            }else if ($_GET['signup']=='fail'){
+                echo '<button class = "btn btn-danger btn-block disabled"> Sign Up Failed!</button>';
+            }else if($_GET['signup']=='empty'){
+              echo '<button class = "btn btn-warning btn-block disabled"> Fill in All Feilds</button>';
+            }else if($_GET['signup']=='usertaken'){
+              echo '<button class = "btn btn-light btn-block disabled" style="color:red"> Username is Taken </button>';
+            }
+          }
+         ?>
 			</form>
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-12"></div>
