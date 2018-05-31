@@ -1,35 +1,14 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
 <!DOCTYPE HTML>
 <html>
-<head lang="en">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="js/script.js"></script>
-</head>
-
+<?php
+	include_once 'header.php';
+?>
 <body>
 <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="index.php">Home</a>
-		</div>
-		<div class="collapse navbar-collapse" id="myNavBar">
-			
+			<a class="navbar-brand" href="index.php">Contact <i class="fa fa-user"></i> Manager</a>
 		</div>
 	</div>
 </nav>
@@ -52,7 +31,7 @@
 				 <input type="checkbox" class="form-check-input" id="exampleCheck1">
 				 <label class="form-check-label" for="exampleCheck1">Remember Me</label>
 			  </div>
-			  <a type="submit" class="btn btn-success btn-block">Submit</a>
+			  <a type="submit" class="btn btn-success btn-block">Sign In</a>
 			  <a type="submit" class="btn btn-primary btn-block" href="signup.php">Sign Up</a>
 			</form>
 		</div>
