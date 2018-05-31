@@ -10,7 +10,8 @@
 		<div class="col-md-2 col-sm-2 col-xs-12"></div>
 		<div class="col-md-8 col-sm-8 col-xs-12">
 			<form class="form-container" action="includes/login.inc.php" method="post">
-			<h1>Login</h1>
+			<h1 class="display-4 text-center pb-3">Hello!</h1>
+			<hr style="height:3px">
 			<?php
 			if(isset($_GET['login'])){
 
@@ -25,7 +26,6 @@
 			  <div class="form-group">
 				 <label for="InputEmail1">Username</label>
 				 <input type="username" name="uid" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
-				 <small id="emailHelp" class="form-text">We'll never share your username with anyone else.</small>
 			  </div>
 			  <div class="form-group">
 				 <label for="InputPassword1">Password</label>
