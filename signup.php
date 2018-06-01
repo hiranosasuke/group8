@@ -45,7 +45,7 @@
             if ($_GET['signup']=='fail'){
                 echo '<button class = "btn btn-danger btn-block disabled"> Sign Up Failed!</button>';
             }else if($_GET['signup']=='empty'){
-              echo '<button class = "btn btn-warning btn-block disabled"> Fill in All Feilds</button>';
+              echo '<button class = "btn btn-warning btn-block disabled"> Fill in All Fields</button>';
             }else if($_GET['signup']=='usertaken'){
               echo '<button class = "btn btn-light btn-block disabled" style="color:red"> Username is Taken </button>';
             }
