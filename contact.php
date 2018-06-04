@@ -13,22 +13,22 @@
 				<div class="card" style="border-top:0px; border-left:0px; border-right:0px">
 	  		<div class="card-header bg-dark text-light">
 					<div class="row">
-						<div class="col-md-1 col-xs-12 text-center m-auto">
+						<div class="col-md-1 col-xs-12 text-center mx-auto my-auto">
 							<i id="darkelement" class="display-4 fa fa-user"></i>
 						</div>
 						<?php
 							$first=$_SESSION['u_first'];
 							$last=$_SESSION['u_last'];
-							echo "<div class='col-md-6 col-xs-12 row'> <h1 class='text-center p-auto m-auto'>$first $last</h1></div>";
+							echo "<div class='col-md-6 col-xs-12 row m-auto d-none d-sm-block'> <h1 class='text-center p-auto m-auto'>$first $last</h1></div>";
 						 ?>
 
-						 <div class="col-md-4 col-xs-6 m-auto">
+						 <div class="col-md-4 col-xs-6 mx-auto m-auto py-3">
 							 <div class="input-group">
 								 <div class="input-group-prepend">
-			 					 		<div class="input-group-text"><i class=" fa fa-search text-dark"></i></div>
+			 					 	<form class="d-flex" method="post">	<button class="input-group-text btn btn-secondary"><i class="fa fa-search text-dark"></i></button>
 		 							</div>
-		 		 					<input type="text" class="form-control" placeholder="Search for...">
-		 	 				  </div>
+		 		 					<input type="text" name="search" class="form-control" placeholder="Search for...">
+		 	 				  </div></form>
 							</div>
 							<div class="col-md-1 col-xs-6 text-center m-auto p-2">
 								 <button class="btn btn-light btn-block" data-toggle="modal" data-target="#addUserModal"><span data-toggle="tooltip" title="Add User"><i class="fa fa-plus text-dark"></i></span></button>
@@ -46,9 +46,21 @@
 	  		<div class="card-body">
 					<?php
 						$id=$_SESSION['u_id'];
-						$sql = "SELECT LastName,FirstName,Email,phone,picture,user_id,contact_id FROM contacts WHERE user_id=$id";
+							$search="";
+							if(isset($_POST['search'])){
+								$search=$_POST['search'];
+								if($_POST['search']=='all' || $_POST['search']=='All'){
+									$search="";
+								}
+							}
+
+
+						$condition = "(FirstName LIKE '%$search%' || LastName LIKE '%$search%')";
+						$sql = "SELECT LastName,FirstName,Email,phone,picture,user_id,contact_id FROM contacts WHERE user_id=$id && $condition" ;
 						$result=mysqli_query($conn, $sql);
 						$resultCheck = mysqli_num_rows($result);
+
+
 						if($resultCheck<1){
 							echo' <div class="display-5 text-center text-dark">
 							 	No Contacts
