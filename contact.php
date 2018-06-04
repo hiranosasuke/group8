@@ -12,24 +12,29 @@
 			<div class="container col-8 mt-5 mx-auto">
 				<div class="card" style="border-top:0px; border-left:0px; border-right:0px">
 	  		<div class="card-header bg-dark text-light">
-					<div>
-						<i id="darkelement" class="display-4 float-left fa fa-user"></i>
+					<div class="row">
+						<div class="col-md-1 col-xs-12 text-center m-auto">
+							<i id="darkelement" class="display-4 fa fa-user"></i>
+						</div>
 						<?php
 							$first=$_SESSION['u_first'];
 							$last=$_SESSION['u_last'];
-							echo "<p class='display-4 float-left align-middle pl-2 m-0'>$first $last</p>";
+							echo "<div class='col-md-6 col-xs-12'> <h1 class='text-center p-auto m-auto'>$first $last</h1></div>";
 						 ?>
-						 <div class="pt-3 float-right">
-							 		<button class="btn btn-light" data-toggle="modal" data-target="#addUserModal"><span data-toggle="tooltip" title="Add User"><i class="fa fa-plus text-dark"></i></span></button>
-						 </div>
-						 <div class="input-group col-4 pt-3 float-right">
-							 <div class="input-group-prepend">
-		 					 		<div class="input-group-text"><i class="fa fa-search text-dark"></i></div>
-	 							</div>
-	 		 					<input type="text" class="form-control" placeholder="Search for...">
-	 	 				  </div>
+
+						 <div class="col-md-4 col-xs-6 m-auto">
+							 <div class="input-group">
+								 <div class="input-group-prepend">
+			 					 		<div class="input-group-text"><i class=" fa fa-search text-dark"></i></div>
+		 							</div>
+		 		 					<input type="text" class="form-control" placeholder="Search for...">
+		 	 				  </div>
+							</div>
+							<div class="col-md-1 col-xs-6 text-center m-auto p-2">
+								 <button class="btn btn-light btn-block" data-toggle="modal" data-target="#addUserModal"><span data-toggle="tooltip" title="Add User"><i class="fa fa-plus text-dark"></i></span></button>
+							</div>
 					</div>
-	  		</div>
+				</div>
 				<?php
 				  if(isset($_GET['add'])){
 				    if($_GET['add']=='success'){
@@ -41,7 +46,7 @@
 	  		<div class="card-body">
 					<?php
 						$id=$_SESSION['u_id'];
-						$sql = "SELECT LastName,FirstName,Email,phone,picture FROM contacts WHERE user_id=$id";
+						$sql = "SELECT LastName,FirstName,Email,phone,picture,user_id,contact_id FROM contacts WHERE user_id=$id";
 						$result=mysqli_query($conn, $sql);
 						$resultCheck = mysqli_num_rows($result);
 						if($resultCheck<1){
@@ -54,46 +59,94 @@
 								$last=$x['LastName'];
 								$email=$x['Email'];
 								$num=$x['phone'];
+								$id=$x['contact_id'];
 								$icon=getIcon($x['picture']);
-							//	$first=$row['FirstName'];
-							echo"<div id='contact' class='border rounded border-primary bg-dark row'>
-								     $icon
-										<div class='my-auto'>
-											<div class='row'>
-												<h3 class='mx-auto'>First: $first</h3>
-											</div>
-											<div class='row'>
-												<h3>Last: $last</h3>
-											</div>
-										</div>
-										<div class='ml-auto my-auto mr-2'>
-											<button class='btn btn-danger p-3'>
-													<i class='fa fa-fw fa-2x fa-trash-alt text-white'></i>
-											</button>
 
-											<buttton class='btn btn-warning p-3'>
-													<i class='fa fa-fw fa-2x fa-edit text-white'></i>
-											</buttton>
+
+
+							//	$first=$row['FirstName'];
+							echo"
+								    <div id='contact' class='py-1'>
+											<div name='contact' class=' contact border rounded border-primary bg-dark row' data-toggle='modal' data-target='#$id-Modal'>
+
+												<div class='container m-1'>
+											 		<div class='row'>
+														<div class='col-md-2 text-center'>
+															$icon
+														</div>
+														<div class='col-md-6 text-center m-auto'>
+															<h3 class='mx-auto'> $first $last</h3>
+														</div>
+														<div class='col-md-2 my-auto'>
+											  			<buttton class='btn btn-danger d-block' data-toggle='modal' data-target='#deleteModal'>
+												  			<i class='fa fa-fw fa-2x fa-trash-alt text-white'></i>
+										  				</buttton>
+														</div>
+														<div class='col-md-2 my-auto' data-toggle='modal' data-target='#updateModal'>
+															<buttton class='btn btn-warning d-block'>
+																<i class='fa fa-fw fa-2x fa-edit text-white'></i>
+															</buttton>
+														</div>
+											 		</div>
+											 	</div>
+											 </div>
+											</div>
+
+
+									<!--CONTACT MODAL-->
+									<div class='modal fade' id='$id-Modal'>
+
+										<div class='modal-dialog modal-lg'>
+											<div class='modal-content'>
+												<div class='modal-header bg-dark text-dark'>
+													<div class='col-md-12 text-center'>
+															<span class='display-4 '><b class='text-white'>$first $last</b></span>
+													</div>
+												</div>
+												<div class='modal-body'>
+													<form>
+														<div class='my-3 py-2 my-0 row bg-secondary rounded'>
+															<h2 class='text-dark m-auto'>	First Name: $first</h2>
+														</div>
+														<div class='my-3 py-2 row bg-secondary rounded'>
+															<h2 class='text-dark m-auto '>	Last Name: $last</h2>
+														</div>
+														<div class='my-3 py-2 row  bg-secondary rounded'>
+															<h2 class='text-dark m-auto'>	Email: $email</h2>
+														</div>
+														<div class='my-3 py-2 row bg-secondary rounded'>
+															<h2 class='text-dark m-auto '>	Phone: $num</h2>
+														</div>
+
+
+													</form>
+											</div>
+											<div class='modal-footer bg-dark rounded-bottom'>
+
+											</div>
 										</div>
-									</div>";
+									</div>
+									</div>
+									";
+
 							}
 						}
 
 						function getIcon($num){
 							if($num==1){
-						  	return"<i class='p-2 display-2 mr-5 fa fa-user'></i>";
+						  	return"<i class='display-2 p-3 fa fa-user'></i>";
 							}else if($num==2){
-								return "<i class='p-2 display-2 mr-5 fa fa-user-tie'></i>";
+								return "<i class='display-2 p-3 fa fa-user-tie'></i>";
 							}else if($num==3){
-								return "<i class='p-2 display-2 mr-5 fa fa-frog'></i>";
+								return "<i class='display-2 p-3 fa fa-frog'></i>";
 							}else if($num==4){
-							  return "<i class='p-2 display-2 mr-5 fa fa-kiwi-bird'></i>";
-							}else if($numm==5){
-								return "<i class='p-2 display-2 mr-5 fa fa-leaf'></i>";
+							  return "<i class=' display-2 p-3 fa fa-kiwi-bird'></i>";
+							}else if($num==5){
+								return "<i class=' display-2 p-3 fa fa-leaf'></i>";
 							}else if($num==6){
-								return "<i class='p-2 display-2 mr-5 fa fa-crow'></i>";
+								return "<i class=' display-2 p-3 fa fa-crow'></i>";
 							}else if($num==7){
-								return "<i class='p-2 display-2 mr-5 fa fa-dove'></i>";
+								return "<i class='display-2 p-3  fa fa-dove'></i>";
 							}
 						}
 
@@ -159,10 +212,88 @@
 	</div>
 </div>
 
+
+
+<!-- DELETE MODAL-->
+<div class="modal fade" id="deleteModal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-danger text-dark">
+				<div class="col-md-12 text-center">
+						<span class="display-4 "><b class="text-dark">Delete Contact</b></span>
+				</div>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="my-3 py-2 my-0 row bg-secondary rounded">
+						<h2 class="text-dark m-auto">	First Name: First</h2>
+					</div>
+					<div class="my-3 py-2 row bg-secondary rounded">
+						<h2 class="text-dark m-auto ">	Last Name: Last</h2>
+					</div>
+					<div class="my-3 py-2 row  bg-secondary rounded">
+						<h2 class="text-dark m-auto">	Email: email</h2>
+					</div>
+					<div class="my-3 py-2 row bg-secondary rounded">
+						<h2 class="text-dark m-auto ">	Phone: 407 444-444</h2>
+					</div>
+
+
+				</form>
+		</div>
+		<div class="modal-footer bg-danger rounded-bottom">
+
+		</div>
+	</div>
+</div>
+</div>
+
+<!--UPDATE MODAL-->
+<div class="modal fade" id="updateModal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-warning text-dark">
+				<div class="col-md-12 text-center">
+						<span class="display-4 "><b class="text-dark">Update Contact</b></span>
+				</div>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="my-3 py-2 my-0 row bg-secondary rounded">
+						<h2 class="text-dark m-auto">	First Name: First</h2>
+					</div>
+					<div class="my-3 py-2 row bg-secondary rounded">
+						<h2 class="text-dark m-auto ">	Last Name: Last</h2>
+					</div>
+					<div class="my-3 py-2 row  bg-secondary rounded">
+						<h2 class="text-dark m-auto">	Email: email</h2>
+					</div>
+					<div class="my-3 py-2 row bg-secondary rounded">
+						<h2 class="text-dark m-auto ">	Phone: 407 444-444</h2>
+					</div>
+
+
+				</form>
+		</div>
+		<div class="modal-footer bg-warning rounded-bottom">
+
+		</div>
+	</div>
+</div>
+</div>
+
 <script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
+
+
+
+
+$('#deleteModal').on('hide.bs.modal', function (e) {
+  	$('#contactModal').modal('hide');
+})
+
+$('#updateModal').on('hide.bs.modal', function (e) {
+  	$('#contactModal').modal('hide');
+})
 
 
 function getItem(item) {

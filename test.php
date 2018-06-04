@@ -1,4 +1,4 @@
 <?php
 
-echo "<script> console.log('Test')</script>";
+echo "Hi";
  ?>

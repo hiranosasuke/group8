@@ -35,7 +35,7 @@
 				 <input type="uid" name="uid" class="form-control" id="exampleUser" placeholder="Username">
 			  </div>
 			  <div class="form-group">
-				 <input type="password" name="pwd" class="form-control" id="exampleUser" placeholder="Password">
+				 <input type="password" name="pwd" class="form-control" id="examplePass" placeholder="Password">
 			  </div>
 			  <button type="submit" name="submit" class="btn btn-primary btn-block">Sign Up</button>
         <!--Response for submit-->
