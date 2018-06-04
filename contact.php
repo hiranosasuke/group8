@@ -19,7 +19,7 @@
 						<?php
 							$first=$_SESSION['u_first'];
 							$last=$_SESSION['u_last'];
-							echo "<div class='col-md-6 col-xs-12'> <h1 class='text-center p-auto m-auto'>$first $last</h1></div>";
+							echo "<div class='col-md-6 col-xs-12 row'> <h1 class='text-center p-auto m-auto'>$first $last</h1></div>";
 						 ?>
 
 						 <div class="col-md-4 col-xs-6 m-auto">
