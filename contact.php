@@ -13,8 +13,10 @@
 				<div class="card" style="border-top:0px; border-left:0px; border-right:0px">
 	  		<div class="card-header bg-dark text-light">
 					<div class="row">
-						<div class="col-md-1 col-xs-12 text-center mx-auto my-auto">
-							<i id="darkelement" class="display-4 fa fa-user"></i>
+						<div  class="col-md-1 col-xs-12 text-center mx-auto my-auto">
+							<a href="#" data-toggle="modal" data-target="#settingsModal">
+								<i class="display-4 fa fa-user"></i>
+							</a>
 						</div>
 						<?php
 							$first=$_SESSION['u_first'];
@@ -282,6 +284,46 @@
 					</div>
 					<div class="my-3 py-2 row bg-secondary rounded">
 						<h2 class="text-dark m-auto ">	Phone: 407 444-444</h2>
+					</div>
+
+
+				</form>
+		</div>
+		<div class="modal-footer bg-warning rounded-bottom">
+
+		</div>
+	</div>
+</div>
+</div>
+<!--Settings MODAL-->
+<?php
+	$u_id= $_SESSION['u_id'];
+	$u_first = $_SESSION['u_first'];
+	$u_last = $_SESSION['u_last'];
+	$u_email = $_SESSION['u_email'];
+	$u_uid = $_SESSION['u_uid'];
+?>
+<div class="modal fade" id="settingsModal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header bg-warning text-dark">
+				<div class="col-md-12 text-center">
+						<span class="display-4 "><b class="text-dark"><?php echo"User Info" ?></b></span>
+				</div>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="my-3 py-2 my-0 row bg-secondary rounded">
+						<h2 class="text-dark m-auto">	First Name: <?php echo"$u_first" ?></h2>
+					</div>
+					<div class="my-3 py-2 row bg-secondary rounded">
+						<h2 class="text-dark m-auto ">	Last Name: <?php echo"$u_last" ?></h2>
+					</div>
+					<div class="my-3 py-2 row  bg-secondary rounded">
+						<h2 class="text-dark m-auto">	Email: <?php echo"$u_email" ?></h2>
+					</div>
+					<div class="my-3 py-2 row bg-secondary rounded">
+						<h2 class="text-dark m-auto ">	UserName: <?php echo"$u_uid" ?></h2>
 					</div>
 
 
