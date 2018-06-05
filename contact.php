@@ -121,7 +121,6 @@
 
 									<!--CONTACT MODAL-->
 									<div class='modal contact fade' id='$id-Modal'>
-
 										<div class='modal-dialog modal-lg'>
 											<div class='modal-content'>
 												<div class='modal-header bg-dark text-dark'>
@@ -156,7 +155,7 @@
 
 									<!--DELETECONTACT MODAL-->
 									<div class='modal fade' id='deleteContactModal$id' role='dialog'>
-										<div class='modal-dialog' role='document'>
+										<div class='modal-dialog modal-lg' role='document'>
 											<form method='post' action='includes/delContact.inc.php'>
 											<div class='modal-content text-dark'>
 												<input type='hidden' name='delete_id' value='$id'>
@@ -168,10 +167,12 @@
 													<i style='color:red' class='fa fa-7x fa-exclamation-triangle'></i>
 												</div>
 
-												<span class=' display-4 text-dark'>Are you sure you want to delete <span style='color:red'> $first $last</span>?</span>
+												<span class='display-4 text-dark'>Are you sure you want to delete <span style='color:red'> $first $last</span>?</span>
 												<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
 													<span aria-hidden='true'>&times;</span>
 												</button>
+												</br>
+												</br>
 												</div>
 												<div class='modal-footer rounded-bottom bg-danger'>
 													<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
