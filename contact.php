@@ -44,6 +44,18 @@
 				      echo "<script>setTimeout(\"location.href = 'contact.php';\",1500);</script>";
 				    }
 				  }
+					if(isset($_GET['update'])){
+						if($_GET['update']=='success'){
+							echo '<button class = "btn btn-success btn-block disabled"> Contact Updated!</button>';
+							echo "<script>setTimeout(\"location.href = 'contact.php';\",1500);</script>";
+						}
+					}
+					if(isset($_GET['delete'])){
+						if($_GET['delete']=='success'){
+							echo '<button class = "btn btn-success btn-block disabled"> Contact Deleted!</button>';
+							echo "<script>setTimeout(\"location.href = 'contact.php';\",1500);</script>";
+						}
+					}
 				?>
 	  		<div class="card-body">
 					<?php
@@ -77,7 +89,6 @@
 								$icon=getIcon($x['picture']);
 
 
-
 							//	$first=$row['FirstName'];
 							echo"
 								    <div id='contact' class='py-1'>
@@ -92,13 +103,12 @@
 															<h3 class='mx-auto'> $first $last</h3>
 														</div>
 														<div class='col-md-2 my-auto'>
-											  			<buttton class='btn btn-danger d-block' data-toggle='modal' data-target='#deleteModal'>
-												  			<i class='fa fa-fw fa-2x fa-trash-alt text-white'></i>
-										  				</buttton>
-														</div>
-														<div class='col-md-2 my-auto' data-toggle='modal' data-target='#updateModal'>
-															<buttton class='btn btn-warning d-block'>
-																<i class='fa fa-fw fa-2x fa-edit text-white'></i>
+															<button class='btn btn-danger p-3' data-toggle='modal' data-target='#deleteContactModal$id'>
+																	<i class='fa fa-fw fa-2x fa-trash-alt text-white'></i>
+															</button>
+
+															<buttton class='btn btn-warning p-3' data-toggle='modal' data-target='#editContactModal$id'>
+																	<i class='fa fa-fw fa-2x fa-edit text-white'></i>
 															</buttton>
 														</div>
 											 		</div>
@@ -140,6 +150,52 @@
 											</div>
 										</div>
 									</div>
+									</div>
+
+									<!--DELETECONTACT MODAL-->
+									<div class='modal fade' id='deleteContactModal$id' role='dialog'>
+										<div class='modal-dialog' role='document'>
+											<form method='post' action='includes/delContact.inc.php'>
+											<div class='modal-content text-dark'>
+												<input type='hidden' name='delete_id' value='$id'>
+												<div class='modal-header text-dark'>
+													Are you sure you want to delete $first $last?
+													<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+														<span aria-hidden='true'>&times;</span>
+													</button>
+												</div>
+												<div class='modal-footer'>
+													<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
+													<button type='submit' class='btn btn-primary' name='delete'>Confirm</button>
+												</div>
+											</div>
+										</form>
+										</div>
+									</div>
+
+									<!--EDITCONTACT MODAL-->
+									<div class='modal fade' id='editContactModal$id'>
+										<div class='modal-dialog modal-lg'>
+											<div class='modal-content'>
+												<div class='modal-header bg-warning text-dark'>
+													<h4 class='modal-header' style='border-bottom:0px'>Edit Contact</h4>
+													<button class='close' data-dismiss='modal'>&times;</button>
+												</div>
+												<div class='modal-body'>
+													<form class='col-10 m-auto border' action='includes/editContact.inc.php' method='POST'>
+														 <input type='hidden' name='edit_id' value='$id'>
+														 <input name='newfirst' class='form-control mt-3 mb-2' placeholder='$first'>
+														 <input name='newlast' class='form-control my-2' placeholder='$last'>
+														 <input name='newemail' class='form-control my-2' placeholder='$email'>
+														 <input name='newnum' class='form-control my-2' placeholder='$num'>
+
+												</div>
+												<div class='modal-footer bg-warning rounded-bottom'>
+														<button name='update' type='submit' class='btn btn-success'>Update</button>
+												</div>
+												</form>
+											</div>
+										</div>
 									</div>
 									";
 
@@ -226,75 +282,6 @@
 	</div>
 </div>
 
-
-
-<!-- DELETE MODAL-->
-<div class="modal fade" id="deleteModal">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header bg-danger text-dark">
-				<div class="col-md-12 text-center">
-						<span class="display-4 "><b class="text-dark">Delete Contact</b></span>
-				</div>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="my-3 py-2 my-0 row bg-secondary rounded">
-						<h2 class="text-dark m-auto">	First Name: First</h2>
-					</div>
-					<div class="my-3 py-2 row bg-secondary rounded">
-						<h2 class="text-dark m-auto ">	Last Name: Last</h2>
-					</div>
-					<div class="my-3 py-2 row  bg-secondary rounded">
-						<h2 class="text-dark m-auto">	Email: email</h2>
-					</div>
-					<div class="my-3 py-2 row bg-secondary rounded">
-						<h2 class="text-dark m-auto ">	Phone: 407 444-444</h2>
-					</div>
-
-
-				</form>
-		</div>
-		<div class="modal-footer bg-danger rounded-bottom">
-
-		</div>
-	</div>
-</div>
-</div>
-
-<!--UPDATE MODAL-->
-<div class="modal fade" id="updateModal">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header bg-warning text-dark">
-				<div class="col-md-12 text-center">
-						<span class="display-4 "><b class="text-dark">Update Contact</b></span>
-				</div>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="my-3 py-2 my-0 row bg-secondary rounded">
-						<h2 class="text-dark m-auto">	First Name: First</h2>
-					</div>
-					<div class="my-3 py-2 row bg-secondary rounded">
-						<h2 class="text-dark m-auto ">	Last Name: Last</h2>
-					</div>
-					<div class="my-3 py-2 row  bg-secondary rounded">
-						<h2 class="text-dark m-auto">	Email: email</h2>
-					</div>
-					<div class="my-3 py-2 row bg-secondary rounded">
-						<h2 class="text-dark m-auto ">	Phone: 407 444-444</h2>
-					</div>
-
-
-				</form>
-		</div>
-		<div class="modal-footer bg-warning rounded-bottom">
-
-		</div>
-	</div>
-</div>
-</div>
 <!--Settings MODAL-->
 <?php
 	$u_id= $_SESSION['u_id'];
