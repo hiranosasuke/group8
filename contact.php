@@ -9,6 +9,7 @@
 ?>
 
 <body>
+
 			<div class="container col-8 mt-5 mx-auto">
 				<div class="card" style="border-top:0px; border-left:0px; border-right:0px">
 	  		<div class="card-header bg-dark text-light">
@@ -92,7 +93,7 @@
 							//	$first=$row['FirstName'];
 							echo"
 								    <div id='contact' class='py-1'>
-											<div name='contact' class=' contact border rounded border-primary bg-dark row' data-toggle='modal' data-target='#$id-Modal'>
+											<div name='contact' class='contact border rounded border-primary bg-dark row' data-toggle='modal' data-target='#$id-Modal'>
 
 												<div class='container m-1'>
 											 		<div class='row'>
@@ -103,13 +104,14 @@
 															<h3 class='mx-auto'> $first $last</h3>
 														</div>
 														<div class='col-md-2 my-auto'>
-															<button class='btn btn-danger p-3' data-toggle='modal' data-target='#deleteContactModal$id'>
+															<button class='btn btn-danger btn-block' data-dismiss='modal' onclick='myFunction(this)'  data-toggle='modal' data-target='#deleteContactModal$id'>
 																	<i class='fa fa-fw fa-2x fa-trash-alt text-white'></i>
 															</button>
-
-															<buttton class='btn btn-warning p-3' data-toggle='modal' data-target='#editContactModal$id'>
+														</div>
+														<div class='col-md-2 my-auto'>
+															<button class='btn btn-warning btn-block' data-toggle='modal' onclick='myFunction(this)' data-target='#editContactModal$id'>
 																	<i class='fa fa-fw fa-2x fa-edit text-white'></i>
-															</buttton>
+															</button>
 														</div>
 											 		</div>
 											 	</div>
@@ -118,7 +120,7 @@
 
 
 									<!--CONTACT MODAL-->
-									<div class='modal fade' id='$id-Modal'>
+									<div class='modal contact fade' id='$id-Modal'>
 
 										<div class='modal-dialog modal-lg'>
 											<div class='modal-content'>
@@ -158,13 +160,20 @@
 											<form method='post' action='includes/delContact.inc.php'>
 											<div class='modal-content text-dark'>
 												<input type='hidden' name='delete_id' value='$id'>
-												<div class='modal-header text-dark'>
-													Are you sure you want to delete $first $last?
-													<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-														<span aria-hidden='true'>&times;</span>
-													</button>
+												<div class='modal-header bg-danger text-dark'>
+													<h1 class='text-dark'> Delete Contact! </h1>
 												</div>
-												<div class='modal-footer'>
+												<div class='modal-body'>
+												<div class='text-center'>
+													<i style='color:red' class='fa fa-7x fa-exclamation-triangle'></i>
+												</div>
+
+												<span class=' display-4 text-dark'>Are you sure you want to delete <span style='color:red'> $first $last</span>?</span>
+												<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+													<span aria-hidden='true'>&times;</span>
+												</button>
+												</div>
+												<div class='modal-footer rounded-bottom bg-danger'>
 													<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>
 													<button type='submit' class='btn btn-primary' name='delete'>Confirm</button>
 												</div>
@@ -182,7 +191,7 @@
 													<button class='close' data-dismiss='modal'>&times;</button>
 												</div>
 												<div class='modal-body'>
-													<form class='col-10 m-auto border' action='includes/editContact.inc.php' method='POST'>
+													<form class='col-10 m-auto p-5 border' action='includes/editContact.inc.php' method='POST'>
 														 <input type='hidden' name='edit_id' value='$id'>
 														 <input name='newfirst' class='form-control mt-3 mb-2' placeholder='$first'>
 														 <input name='newlast' class='form-control my-2' placeholder='$last'>
@@ -190,7 +199,7 @@
 														 <input name='newnum' class='form-control my-2' placeholder='$num'>
 
 												</div>
-												<div class='modal-footer bg-warning rounded-bottom'>
+												<div class='modal-footer rounded-bottom bg-warning rounded-bottom'>
 														<button name='update' type='submit' class='btn btn-success'>Update</button>
 												</div>
 												</form>
@@ -325,16 +334,12 @@
 
 <script>
 
-
-
-
-$('#deleteModal').on('hide.bs.modal', function (e) {
-  	$('#contactModal').modal('hide');
-})
-
-$('#updateModal').on('hide.bs.modal', function (e) {
-  	$('#contactModal').modal('hide');
-})
+function myFunction(e) {
+	var openModal =	$(e).attr("data-target");
+	$(openModal).on('hide.bs.modal', function () {
+            $('.contact').modal('hide');
+    });
+}
 
 
 function getItem(item) {
